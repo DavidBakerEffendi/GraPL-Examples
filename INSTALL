@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Download latest stable GraPL libraries
+rm -rf lib && mkdir -p lib && rm -rf ./tmp && mkdir -p ./tmp && cd ./tmp \
+  && git init \
+  && git remote add origin https://github.com/DavidBakerEffendi/j2GraPL.git \
+  && git fetch --depth 1 origin develop \
+  && git reset --hard FETCH_HEAD \
+  && ./gradlew jar \
+  && mv ./build/libs/j2GraPL-X.X.X.jar ../lib/j2GraPL-X.X.X.jar \
+  && cd .. && rm -rf ./tmp && mkdir -p ./tmp && cd ./tmp \
+  && git init \
+  && git remote add origin https://github.com/DavidBakerEffendi/GraPLHook4j.git \
+  && git fetch --depth 1 origin develop \
+  && git reset --hard FETCH_HEAD \
+  && ./gradlew jar \
+  && mv ./build/libs/GraPLHook4j-X.X.X.jar ../lib/GraPLHook4j-X.X.X.jar \
+  && cd .. && rm -rf ./tmp \
