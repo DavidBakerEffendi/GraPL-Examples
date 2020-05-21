@@ -30,7 +30,7 @@ The basic operation that the `com.example.*App.java` classes do is:
 
 1) Create a hook that connects to the selected graph database backend.
 2) Loads a Java file to project to the database.
-3) Exports the projected graph as `graph.xml` to the base directory.
+3) (TinkerGraph) Exports the projected graph as `graph.xml` to the base directory.
 
 One can then visualize this graph using a visualization tool such as [Cytoscape](https://cytoscape.org/).
 
@@ -70,7 +70,7 @@ The JanusGraph example can be run using `./gradlew janusGraphApp`. The JanusGrap
 The Gremlin Console is a Groovy Console that allows one to connect to the graph database and run Gremlin queries. A 
 separate graph database instance is required i.e. not in-memory configurations. Using JanusGraph as an example:
 
-1) Start JanusGraph using `docker-compose`.
+1) Start JanusGraph using `docker-compose`. (See [JanusGraph](#janusgraph))
 2) Project a program's CPG into JanusGraph with `./gradlew janusGraphApp`.
 3) Run the Gremlin Console using `docker exec -it janusgraph-grapl ./bin/gremlin.sh`.
 4) Connect to the JanusGraph instance "remotely" using:
