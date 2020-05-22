@@ -81,9 +81,39 @@ separate graph database instance is required i.e. not in-memory configurations. 
 
 You should now be connected to the JanusGraph database with the Gremlin Console and can run some basic queries such as:
 
-*List all classes*: `g.V().hasLabel("FILE").values("name").toList()`
+*List all classes*:
+```
+gremlin> g.V().hasLabel("FILE").values("name").toList()
+==>Arithmetic1
+```
+*How many times each variable is assigned within a method*:
+```
+gremlin> g.V().has("METHOD", "fullName", "intraprocedural.arithmetic.Arithmetic1.main") \
+    .repeat(__.out("AST")).emit().has("BLOCK", "name", "STORE") \
+        .out().hasLabel("LOCAL") \
+    .groupCount("lv").by("name").cap("lv")
+==>{1=1, 2=1, 3=1, 4=1, 5=1, 6=1}
+```
 
 TODO: Add more operations
+
+## Contributing
+
+If you find a bug or would like to see a [certain kind of query](#connecting-to-the-gremlin-console) on this repository
+then simply open up an issue with the following format:
+### Bug Issue
+* Title: "BUG: \<short title\>"
+* Brief description of expected output vs actual output
+* Steps to reproduce
+### Query Example
+* Title: "QRY: \<short title\>"
+* Description of the output you would like to see given a CPG
+### Documentation
+* Title: "DOC: \<short title\>"
+* Description of what you would like explained or documented better
+
+If you can fix these yourself then by all means fork, and my a pull request linked to the issue. Otherwise, I will see to 
+the fix or enhancement myself.
 
 ## Known Issues
 
