@@ -114,8 +114,3 @@ then simply open up an issue with the following format:
 
 If you can fix these yourself then by all means fork, and my a pull request linked to the issue. Otherwise, I will see to 
 the fix or enhancement myself.
-
-## Known Issues
-
-* There is a bug where, if one feeds the whole example directory into the cannon, a vertex lookup throws a
-`java.util.NoSuchElementException`.
